@@ -15,11 +15,6 @@ Card.init({
     date:{
         type: Datatypes.DATE,
         allowNull: false,
-    },
-    statut:{
-        type: Datatypes.STRING(7),
-        allowNull: false,
-        defaultValue: '#000000',
     }
 }, {
     sequelize: client,
