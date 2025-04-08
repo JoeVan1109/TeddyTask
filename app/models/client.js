@@ -17,8 +17,9 @@ export const client = new Sequelize(`postgres://${user}:${password}@${host}:${po
     logging: false,
 });
 
-client.authentificate()
+
+client.authenticate()
     .then(
         () => console.log(`🚀 database ${database} connected`),
         () => console.log(`❌ unable to connect to database ${database}`)
-    )
+);

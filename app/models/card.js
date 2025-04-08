@@ -1,19 +1,19 @@
-import { Model, Datatypes } from "sequelize";
+import { Model, DataTypes } from "sequelize";
 import { client } from "./client.js";
 
 export class Card extends Model {}
 
 Card.init({
     title:{
-        type: Datatypes.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     description:{
-        type: Datatypes.TEXT,
+        type: DataTypes.TEXT,
         allowNull: false,
     },
     date:{
-        type: Datatypes.DATE,
+        type: DataTypes.DATE,
         allowNull: false,
     }
 }, {

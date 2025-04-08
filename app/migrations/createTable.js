@@ -1,4 +1,4 @@
-import { Client } from '../models/index.js';
+import { client } from '../models/index.js';
 
 console.log('🗑️ Suppression des tables existantes...');
 await client.drop();

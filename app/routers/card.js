@@ -3,6 +3,8 @@ import { cardController } from '../controllers/cardController.js';
 import { createSchema, patchSchema } from '../validation/card.js';
 import { idSchema, associateSchema } from '../validation/params.js';
 import { validate } from '../validation/validate.js';
+import { withTryCatch } from '../controllers/withTryCatchController.js';
+
 
 export const router = Router();
 
