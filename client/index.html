@@ -50,7 +50,7 @@
 
         <main class="main">
 
-            <template id="list-template-progress">
+            <template id="list-template">
 
                 <section slot="list-id">
 
@@ -60,7 +60,7 @@
 
                             <div class="list-name" slot="list-title"></div>
 
-                            <span class="btn-modify-list" aria-role="button" aria-label="éditer la liste">
+                            <span class="btn-modify-list" aria-role="button" aria-label="Editer la liste">
                                 <img class="icons" src="./assets/img/icon-modify.webp" alt="Modifier la liste">
                             </span>
 
@@ -69,7 +69,7 @@
                             </span>
 
                             <span class="btn-add-card-list" aria-role="button" aria-label="Ajouter une carte à la liste">
-                                <img class="icons" src="./assets/img/icon-add.webp" alt="Modifier la liste">
+                                <img class="icons" src="./assets/img/icon-add.webp" alt="Supprimer la liste">
                             </span>
 
                         </div>
@@ -85,9 +85,47 @@
             </template>
             
 
-            <template id="list-template-completed">
+            <template id="card-template">
 
-                
+                <article class="card">
+
+                    <div class="color-card"></div>
+
+                    <div class="card-header">
+
+                        <div class="card-header-title">
+                            <p slot="card-title"></p>
+                        </div>
+
+                        <div class="card-header-icons">
+
+                            <span class="btn-modify-list" aria-role="button" aria-label="Editer la liste">
+                                <img class="icons" src="./assets/img/icon-modify.webp" alt="Modifier la liste">
+                            </span>
+
+                            <span class="btn-delete-list" aria-role="button" aria-label="Supprimer la liste">
+                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-content" slot="card-content"></div>
+
+                    <div class="card-footer">
+
+                        <div class="card-footer-btn">
+
+                            <span class="btn-modifier-list" aria-role="button" aria-label="Modifier le tag">
+                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Modifier la liste">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
 
             </template>
 
