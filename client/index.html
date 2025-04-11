@@ -110,6 +110,7 @@
             <div class="modal" id="add-card-modal">
                 <div class="modal-background"></div>
                 <div class="modal-card">
+
                     <form>
 
                         <div class="modal-card-header">
@@ -131,6 +132,41 @@
                 
                         <div class="modal-card-footer">
                             <button class="button-add">Ajouter</button>
+                            <button class="button-close" type="button">Annuler</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <!--MODIFY CARD MODAL-->
+
+            <div class="modal" id="modify-card-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+
+                    <form>
+
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Modifier la carte</p>
+                            <button class="button-close" type="button" aria-label="close"></button>
+                        </div>
+                
+                        <div class="modal-card-body">
+                            <label for="modify-card-title" class="label">Titre</label>
+                            <input id="modify-card-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                
+                            <label for="modify-card-content" class="label">Contenu</label>
+                            <textarea id="modify-card-content" class="input" type="text" name="content"
+                            placeholder="Titre de la liste"></textarea>
+                
+                            <label for="modify-card-color" class="label">Couleur</label>
+                            <input id="modify-card-color" class="input" type="color" name="color"></input>
+                        </div>
+                
+                        <div class="modal-card-footer">
+                            <button class="button-modify">Modifier</button>
                             <button class="button-close" type="button">Annuler</button>
                         </div>
 
