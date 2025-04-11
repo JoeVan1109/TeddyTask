@@ -50,6 +50,34 @@
 
         <main class="main">
 
+            <!--ADD LIST MODAL-->
+
+            <div class="modal" id="add-list-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <form>
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Ajouter une liste</p>
+                            <span class="btn-delete-list" aria-role="button" aria-label="Supprimer la liste">
+                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
+                            </span>
+                        </div>
+            
+                        <div class="modal-card-body">
+                            <label for="add-list-title" class="label">Titre</label>
+                            <input id="add-list-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                        </div>
+            
+                        <div class="modal-card-footer">
+                            <button class="button-add">Ajouter</button>
+                            <button class="button-close" type="button">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--LIST TEMPLATE-->
+
             <template id="list-template">
 
                 <section slot="list-id">
@@ -65,7 +93,7 @@
                             </span>
 
                             <span class="btn-delete-list" aria-role="button" aria-label="Supprimer la liste">
-                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Modifier la liste">
+                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
                             </span>
 
                             <span class="btn-add-card-list" aria-role="button" aria-label="Ajouter une carte à la liste">
@@ -84,6 +112,9 @@
 
             </template>
             
+
+
+            <!--CARD TEMPLATE-->
 
             <template id="card-template">
 
@@ -128,6 +159,15 @@
                 </article>
 
             </template>
+
+            <template id="tag-template">
+
+                <span class="tag">
+                    <span slot="tag-name">Nom du tag</span>
+                </span>
+
+            </template>
+
 
         </main>
 
