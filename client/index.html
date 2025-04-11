@@ -58,9 +58,7 @@
                     <form>
                         <div class="modal-card-header">
                             <p class="modal-card-title">Ajouter une liste</p>
-                            <span class="btn-delete-list" aria-role="button" aria-label="Supprimer la liste">
-                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
-                            </span>
+                            <button class="button-close" type="button" aria-label="close"></button>
                         </div>
             
                         <div class="modal-card-body">
@@ -74,6 +72,37 @@
                         </div>
                     </form>
                 </div>
+            </div>
+
+            <!--MODIFY LIST MODAL-->
+
+            <div class="modal" id="modify-list-modal">
+
+                <div class="modal-background"></div>
+
+                <div class="modal-card">
+
+                    <form>
+
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Modifier la liste</p>
+                            <button class="button-close" type="button" aria-label="close"></button>
+                        </div>
+
+                        <div class="modal-card-body">
+                            <label for="modify-list-title" class="label">Titre</label>
+                            <input id="modify-list-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                        </div>
+
+                        <div class="modal-card-footer">
+                            <button class="button-modify">Modifier</button>
+                            <button class="button-close" type="button">Annuler</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
             </div>
 
             <!--LIST TEMPLATE-->
