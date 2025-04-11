@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Fuzzy+Bubbles:wght@400;700&display=swap');
+/*  font-family: "Fuzzy Bubbles", sans-serif; */
+/*  font-family: "Chewy", system-ui; */
+
 .container {
     height: 100vh;
 
@@ -6,4 +10,110 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    color: #404040;
+}
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 3rem 0 1rem;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 8rem;
+}
+
+.title {
+    font-family: "Chewy", system-ui;
+    font-size: 2rem;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search-bar {
+
+    position: absolute;
+
+    padding-left: 1rem;
+
+    width: 25rem;
+    height: 3.1rem;
+
+    border-radius: 10px;
+    border: none;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+
+    box-shadow: rgba(30, 30, 93, 0.15) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.search-button {
+    position: relative;
+    left: 8.5rem;
+
+    width: 7rem;
+    height: 2rem;
+
+    border-radius: 7px;
+    border: none;
+
+    background-color: #C4D7FF;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+}
+
+.add-task-button {
+    width: 11rem;
+    height: 3rem;
+
+    border-radius: 11px;
+    border: none;
+
+    background-color: #C4D7FF;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+}
+
+/* Sidebar styles */
+.sidebar {
+    /* Styles for the sidebar */
+}
+
+.filtered-statut {
+    /* Styles for the "Filtrer par statut" button */
+}
+
+.filtered-deadline {
+    /* Styles for the "Filtrer par échéance" button */
+}
+
+.progress-bar {
+    /* Styles for the progress bar container */
+}
+
+.progress-label {
+    /* Styles for the progress label */
+}
+
+.progress {
+    /* Styles for the progress element */
 }
