@@ -93,6 +93,8 @@
     font-family: "Fuzzy Bubbles", sans-serif;
 }
 
+
+
 /* Sidebar styles */
 .sidebar {
     display: flex;
@@ -141,3 +143,96 @@
 .progress {
     height: 2rem;
 }
+
+/* Modal styles */
+
+
+/* Modal container */
+.modal {
+
+    width: 25rem;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+    background-color: #87A2FF;
+
+    margin: 2rem;
+    padding: 1.5rem;
+
+    border-radius: 9px;
+}
+
+.modal-background {
+    /* Styles for the modal background */
+}
+
+.modal-card {
+    width: 100%;
+}
+
+.modal-card-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.modal-card-title {
+    color: #404040;
+
+    font-size: 1.5rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+}
+
+.input {
+    background-color: #FFFBF9;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+
+    border: none;
+    border-radius: 6px;
+
+    margin: 3rem 0 3rem 1.5rem;
+}
+
+
+.button-modal {
+    width: 9rem;
+    height: 2rem;
+
+    border-radius: 11px;
+    border: none;
+
+    background-color: #FFFBF9;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+}
+
+.button-close {
+
+    border-radius: 6px;
+    border: none;
+
+    background-color: #FFFBF9;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+}
+
+.modal-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-right: 2rem;
+}
+
