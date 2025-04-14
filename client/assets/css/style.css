@@ -95,25 +95,49 @@
 
 /* Sidebar styles */
 .sidebar {
-    /* Styles for the sidebar */
+    display: flex;
+    justify-content:space-around;
 }
 
 .filtered-statut {
-    /* Styles for the "Filtrer par statut" button */
+    width: 11rem;
+    height: 3rem;
+
+    border-radius: 11px;
+    border: none;
+
+    background-color: #C4D7FF;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
 }
 
 .filtered-deadline {
-    /* Styles for the "Filtrer par échéance" button */
+    width: 11rem;
+    height: 3rem;
+
+    border-radius: 11px;
+    border: none;
+
+    background-color: #C4D7FF;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
 }
 
 .progress-bar {
-    /* Styles for the progress bar container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .progress-label {
-    /* Styles for the progress label */
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
 }
 
 .progress {
-    /* Styles for the progress element */
+    height: 2rem;
 }
