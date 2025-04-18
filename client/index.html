@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- Custom JS -->
-    <script src="./assets/js/index.js" type="module"></script>
+    <script src="./assets/js/index.js" type="module" defer></script>
 
     <title>Teddy Task</title>
 </head>
@@ -76,8 +76,8 @@
                         </div>
             
                         <div class="modal-card-footer">
-                            <button class="button-modal">Ajouter</button>
-                            <button class="button-modal" type="button">Annuler</button>
+                            <button class="button-modal button is-success">Ajouter</button>
+                            <button class="button-modal button close" type="button">Annuler</button>
                         </div>
                     </form>
 
@@ -85,11 +85,11 @@
             </div>
 
 
-            <main id="lists-container" class="columns is-multiline">
+            <main id="lists-container" class="lists-container">
 
             </main>
 
-            <!--modal LIST MODAL-->
+            <!-- LIST MODAL-->
 
             <div class="modal" id="modify-list-modal">
 
@@ -155,7 +155,7 @@
             </div>
 
 
-            <!--modal CARD MODAL-->
+            <!--CARD MODAL-->
 
             <div class="modal" id="modify-card-modal">
                 <div class="modal-background"></div>
@@ -214,6 +214,26 @@
 
             </div>
 
+            <!-- CONFIRM MODAL -->
+            <div class="modal" id="confirm-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                <div class="modal-card-head">
+                    <p class="modal-card-title">Confirmation</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </div>
+
+                <div class="modal-card-body">
+                    <p id="error-message" slot="confirm-message">Message de confirmation</p>
+                </div>
+
+                <div class="modal-card-foot">
+                    <button class="button is-success">Confirmer</button>
+                    <button class="button close" type="button">Annuler</button>
+                </div>
+                </div>
+            </div>
+
 
             <!--LIST TEMPLATE-->
 
@@ -225,19 +245,24 @@
 
                         <div class="message-header">
 
+                            <div class="header-button">
+
+                                <span class="add-card-btn" aria-role="button" aria-label="Ajouter une carte à la liste">
+                                    <img class="icons" src="./assets/img/icon-add.webp" alt="Ajouter la liste">
+                                </span>
+
+                                <span class="modify-list-btn" aria-role="button" aria-label="Editer la liste">
+                                    <img class="icons" src="./assets/img/icon-modify.webp" alt="Modifier la liste">
+                                </span>
+
+
+                                <span class="delete-list-btn " aria-role="button" aria-label="Supprimer la liste">
+                                    <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
+                                </span>
+
+                            </div>
+
                             <div class="list-name" slot="list-title"></div>
-
-                            <span class="modify-list-btn" aria-role="button" aria-label="Editer la liste">
-                                <img class="icons" src="./assets/img/icon-modal.webp" alt="Modifier la liste">
-                            </span>
-
-                            <span class="delete-list-btn " aria-role="button" aria-label="Supprimer la liste">
-                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
-                            </span>
-
-                            <span class="add-card-btn" aria-role="button" aria-label="Ajouter une carte à la liste">
-                                <img class="icons" src="./assets/img/icon-add.webp" alt="Supprimer la liste">
-                            </span>
 
                         </div>
 

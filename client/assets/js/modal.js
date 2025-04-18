@@ -138,13 +138,13 @@ const modal = {
     initConfirmModal(message, callback){
         const confirmModal = document.querySelector('#confirm-modal');
         const confirmBtn = confirmModal.querySelector('button.is-success');
-        const closeBtn = confirmModal.querySelector('.button-close');
+        const closeBtn = confirmModal.querySelector('.delete.close');
         closeBtn.removeEventListener('click', modal.onConfirmModalClose);
         confirmModal.querySelector('[slot="confirm-message"]').textContent = message;
         confirmBtn.addEventListener('click', () => {
-            confirmBtn.replaceWith(confirmBtn.cloneNode(true)); // remplace le bouton par une copie du bouton, afin de ne pas conserver de gestionnaires d'événements résiduels
-                modal.closeActiveModal();
-                callback();
+            confirmBtn.replaceWith(confirmBtn.cloneNode(true));
+            modal.closeActiveModal();
+            callback();
         });
         closeBtn.addEventListener('click', modal.onConfirmModalClose);
         confirmModal.classList.add('is-active');
