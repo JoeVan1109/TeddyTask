@@ -166,6 +166,12 @@
     padding: 1.5rem;
 
     border-radius: 9px;
+
+    display: none; /* Initially hidden */
+}
+
+.is-active {
+    display: flex; /* Show the modal when active */
 }
 
 .modal-background {

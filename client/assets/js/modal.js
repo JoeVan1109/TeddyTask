@@ -5,6 +5,8 @@ import tag from './tag.js';
 import { toast } from './toast.js';
 
 
+
+
 const modal = {
 
     // Initializing modals
@@ -136,7 +138,7 @@ const modal = {
     initConfirmModal(message, callback){
         const confirmModal = document.querySelector('#confirm-modal');
         const confirmBtn = confirmModal.querySelector('button.is-success');
-        const closeBtn = confirmModal.querySelector('.button.close');
+        const closeBtn = confirmModal.querySelector('.button-close');
         closeBtn.removeEventListener('click', modal.onConfirmModalClose);
         confirmModal.querySelector('[slot="confirm-message"]').textContent = message;
         confirmBtn.addEventListener('click', () => {
@@ -161,7 +163,7 @@ const modal = {
     async initTagModal(cardId){
         const tagModal = document.querySelector('#tag-modal');
         const tagContainer = tagModal.querySelector('[slot="tags-container"]');
-        const closeBtn = tagModal.querySelector('.button.close');
+        const closeBtn = tagModal.querySelector('.button-close');
         closeBtn.removeEventListener('click', modal.onTagModalClose);
         tagContainer.innerHTML = '';
         tagModal.dataset.id = cardId;

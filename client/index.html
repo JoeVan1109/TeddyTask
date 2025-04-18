@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Custom JS -->
+    <script src="./assets/js/index.js" type="module"></script>
+
     <title>Teddy Task</title>
 </head>
 <body>
@@ -30,7 +36,7 @@
 
             <input type="button" class="add-button" value="Créer une tâche">
 
-            <input type="button" class="add-button" value="Créer une liste">
+            <input type="button" class="add-button" id="add-list-btn" value="Créer une liste">
 
 
         </header>
@@ -76,6 +82,11 @@
                     </form>
                 </div>
             </div>
+
+
+            <main id="lists-container" class="columns is-multiline">
+
+            </main>
 
             <!--modal LIST MODAL-->
 
