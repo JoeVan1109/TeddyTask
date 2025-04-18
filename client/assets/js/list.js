@@ -3,6 +3,7 @@
 import Sortable from 'sortablejs';
 import API from './api.js';
 import modal from './modal.js';
+import card from './card.js';
 
 const list = {
     
