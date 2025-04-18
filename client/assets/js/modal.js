@@ -1,4 +1,8 @@
 import API from './api.js';
+import list from './list.js';
+import card from './card.js';
+import tag from './tag.js';
+import { toast } from './toast.js';
 
 
 const modal = {
