@@ -66,6 +66,7 @@ const modal = {
 
     // Initialize modify list modal form
     
+    // Initialize modify list modal form
     initModifyListModalForm(){
         const modifyModal = document.querySelector('#modify-list-modal');
         const formElem =  modifyModal.querySelector('form');
@@ -74,7 +75,9 @@ const modal = {
             event.preventDefault();
             const id = modifyModal.dataset.id;
             const formData = new FormData(formElem);
-            const newListData = await API.modifyList(id, Object.fromEntries(formData));
+            const data = Object.fromEntries(formData);
+            // Pas besoin de supprimer date ici car problème seulement sur cards
+            const newListData = await API.modifyList(id, data);
             if(newListData){
                 document.querySelector(`section[data-id="${id}"] [slot="list-title"]`).textContent = newListData.title;
                 formElem.reset();
@@ -83,30 +86,42 @@ const modal = {
             }
         }
     },
-    
-    // Initialize add card modal form
 
+    // Initialize add card modal form
     initAddCardModalForm(){
         const addCardModal = document.querySelector('#add-card-modal');
         const formElem =  addCardModal.querySelector('form');
         formElem.addEventListener('submit', onAddCardFormSubmit);
-        async function onAddCardFormSubmit(event){
-            event.preventDefault();
-            const id = addCardModal.dataset.id;
-            const formData = new FormData(formElem);
-            const data = Object.fromEntries(formData);
-            data.list_id = id;
-            const newCardData = await API.createCard(data);
-            if(newCardData){
-                const cardContainer = document.querySelector(`section[data-id="${id}"] .message-body`);
-                const newCardElem = card.createCardElem(newCardData);
-                cardContainer.appendChild(newCardElem);
-                formElem.reset();
-                modal.closeActiveModal();
-                toast('Carte Créée','is-success');
-            }
+        async function onAddCardFormSubmit(event) {
+        event.preventDefault();
+        const id = addCardModal.dataset.id;
+        const formData = new FormData(formElem);
+        const data = Object.fromEntries(formData);
+
+        data.list_id = Number(id);
+
+        // Récupérer et valider la date
+        const dateValue = data.date?.trim();  // récupérer date et enlever espaces
+        if (dateValue) {
+            data.date = dateValue;  // on garde la date si non vide
+        } else {
+            delete data.date;  // sinon on supprime la clé pour ne pas envoyer de null
         }
+
+        const newCardData = await API.createCard(data);
+        if (newCardData) {
+            const cardContainer = document.querySelector(`section[data-id="${id}"] .message-body`);
+            const newCardElem = card.createCardElem(newCardData);
+            cardContainer.appendChild(newCardElem);
+            formElem.reset();
+            modal.closeActiveModal();
+            toast('Carte Créée','is-success');
+        }
+    }
+
     },
+
+
     
 
     // Initialize modify card modal form
@@ -124,7 +139,9 @@ const modal = {
             if(modifiedCardData){
                 const card = document.querySelector(`.card[data-id="${id}"]`);
                 card.querySelector('[slot="card-title"]').textContent = modifiedCardData.title;
-                card.querySelector('[slot="card-content"]').textContent = modifiedCardData.content;
+                card.querySelector('[slot="card-content"]').textContent = modifiedCardData.description;
+                card.querySelector('[slot="card-date"]').textContent = modifiedCardData.date ? new Date(modifiedCardData.date).toLocaleDateString() : '';
+                card.querySelector('[slot="card-color"]').textContent = modifiedCardData.color;
                 card.querySelector('.card-color').style.backgroundColor = data.color;
                 formElem.reset();
                 modal.closeActiveModal();

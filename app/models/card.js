@@ -8,13 +8,17 @@ Card.init({
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    description:{
+    content:{
         type: DataTypes.TEXT,
         allowNull: false,
     },
     date:{
         type: DataTypes.DATE,
         allowNull: false,
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: true,
     }
 }, {
     sequelize: client,

@@ -137,12 +137,15 @@
                             <label for="add-card-title" class="label">Titre</label>
                             <input id="add-card-title" class="input" type="text" name="title" placeholder="Titre de la liste">
                 
+                            <label for="add-card-date" class="label">Date</label>
+                            <input id="add-card-date" class="input" slot="add-card-date" type="date" name="date" placeholder="Date de la carte"></input>
+
+
                             <label for="add-card-content" class="label">Contenu</label>
-                            <textarea id="add-card-content" class="input" type="text" name="content"
-                            placeholder="Titre de la liste"></textarea>
-                
+                            <textarea id="add-card-content" class="input" type="text" name="content" placeholder="Contenu de la carte"></textarea>
+
                             <label for="add-card-color" class="label">Couleur</label>
-                            <input id="add-card-color" class="input" type="color" name="color"></input>
+                            <input id="add-card-color" class="card-color" type="color" name="color" value="#000000"></input>
                         </div>
                 
                         <div class="modal-card-footer">
@@ -173,8 +176,7 @@
                             <input id="modify-card-title" class="input" type="text" name="title" placeholder="Titre de la liste">
                 
                             <label for="modify-card-content" class="label">Contenu</label>
-                            <textarea id="modify-card-content" class="input" type="text" name="content"
-                            placeholder="Titre de la liste"></textarea>
+                            <textarea id="modify-card-content" class="input" type="text" name="content" placeholder="Titre de la liste"></textarea>
                 
                             <label for="modify-card-color" class="label">Couleur</label>
                             <input id="modify-card-color" class="input" type="color" name="color"></input>
@@ -285,7 +287,7 @@
 
                 <article class="card">
 
-                    <div class="color-card"></div>
+                    <div class="card-color" style="width: 20px; height: 20px; border-radius: 4px;"></div>
 
                     <div class="card-header">
 
@@ -295,11 +297,11 @@
 
                         <div class="card-header-icons">
 
-                            <span class="btn-modal-list" aria-role="button" aria-label="Editer la liste">
+                            <span class="modify-card-btn" aria-role="button" aria-label="Editer la card">
                                 <img class="icons" src="./assets/img/icon-modal.webp" alt="Modifier la liste">
                             </span>
 
-                            <span class="btn-delete-list" aria-role="button" aria-label="Supprimer la liste">
+                            <span class="delete-card-btn" aria-role="button" aria-label="Supprimer la card">
                                 <img class="icons" src="./assets/img/icon-delete.webp" alt="Supprimer la liste">
                             </span>
 
@@ -313,8 +315,8 @@
 
                         <div class="card-footer-btn">
 
-                            <span class="btn-modifier-list" aria-role="button" aria-label="Modifier le tag">
-                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Modifier la liste">
+                            <span class="add-tag-btn" aria-role="button" aria-label="Modifier le tag">
+                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Modifier le tag">
                             </span>
 
                         </div>

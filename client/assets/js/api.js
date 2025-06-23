@@ -53,6 +53,7 @@ const API = {
     },
     
     async createCard(data){
+        console.log('Data envoyée à l’API /cards :', data);
         return await API.fetchAPI('/cards',{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
