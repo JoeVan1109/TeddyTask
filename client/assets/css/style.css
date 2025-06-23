@@ -148,6 +148,11 @@
 
 /* Modal styles */
 
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Modal container */
 .modal {
@@ -175,8 +180,7 @@
     display: flex;
 }
 
-.modal-background {
-}
+
 
 .modal-card {
     width: 100%;
@@ -201,6 +205,28 @@
     justify-content: space-around;
     align-items: center;
 
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-item {
+    width: 9rem;
+    height: 2rem;
+
+    border-radius: 11px;
+    border: none;
+
+    background-color: #FFFBF9;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+
+    margin: 1rem;
 }
 
 .modal-card-title {
@@ -258,7 +284,7 @@
     font-family: "Fuzzy Bubbles", sans-serif;
 }
 
-.button-close {
+.button {
 
     border-radius: 6px;
     border: none;
@@ -334,21 +360,7 @@
     font-size: 1.5rem;
 }
 
-.modify-list-btn {
-    /* Add your styles here */
-}
 
-.delete-list-btn {
-    
-}
-
-.add-card-btn {
-    /* Add your styles here */
-}
-
-.message-body {
-    /* Add your styles here */
-}
 
 .icons {
     width: 2rem;

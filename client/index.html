@@ -34,8 +34,6 @@
 
             </div>
 
-            <input type="button" class="add-button" value="Créer une tâche">
-
             <input type="button" class="add-button" id="add-list-btn" value="Créer une liste">
 
 
@@ -287,18 +285,18 @@
 
                 <article class="card">
 
-                    <div class="card-color" style="width: 20px; height: 20px; border-radius: 4px;"></div>
+                    
 
                     <div class="card-header">
-
+                        <div class="card-color" style="width: 20px; height: 20px; border-radius: 4px;"></div>
                         <div class="card-header-title">
-                            <p slot="card-title"></p>
+                            <p slot="card-title" class="card-item"></p>
                         </div>
 
                         <div class="card-header-icons">
 
                             <span class="modify-card-btn" aria-role="button" aria-label="Editer la card">
-                                <img class="icons" src="./assets/img/icon-modal.webp" alt="Modifier la liste">
+                                <img class="icons" src="./assets/img/icon-modify.webp" alt="Modifier la liste">
                             </span>
 
                             <span class="delete-card-btn" aria-role="button" aria-label="Supprimer la card">
@@ -315,8 +313,8 @@
 
                         <div class="card-footer-btn">
 
-                            <span class="add-tag-btn" aria-role="button" aria-label="Modifier le tag">
-                                <img class="icons" src="./assets/img/icon-delete.webp" alt="Modifier le tag">
+                            <span class="add-tag-btn" aria-role="button" aria-label="Modifier le tag" slot="tag-container">
+                                <img class="icons" src="./assets/img/icon-modify.webp" alt="Modifier le tag">
                             </span>
 
                         </div>
@@ -327,13 +325,8 @@
 
             </template>
 
-            <template id="tag-template">
+            
 
-                <span class="tag">
-                    <span slot="tag-name">Nom du tag</span>
-                </span>
-
-            </template>
 
 
         </main>

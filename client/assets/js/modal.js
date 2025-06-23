@@ -1,7 +1,7 @@
 import API from './api.js';
 import list from './list.js';
 import card from './card.js';
-import tag from './tag.js';
+
 import { toast } from './toast.js';
 
 
@@ -175,69 +175,6 @@ const modal = {
     },
     
 
-    // Initialize tag modal
-
-    async initTagModal(cardId){
-        const tagModal = document.querySelector('#tag-modal');
-        const tagContainer = tagModal.querySelector('[slot="tags-container"]');
-        const closeBtn = tagModal.querySelector('.button-close');
-        closeBtn.removeEventListener('click', modal.onTagModalClose);
-        tagContainer.innerHTML = '';
-        tagModal.dataset.id = cardId;
-        // récupérer tous les tags
-        const tags = await API.getTags();
-        // récupérer la carte
-        const cardData = await API.getCard(cardId);
-        // récupérer les tags de la carte
-        const cardTags = cardData.tags ? cardData.tags : [];
-        // les afficher
-        tags.forEach(tagData => {
-            const tagElem = document.createElement('button');
-            tagElem.dataset.id = tagData.id;
-            tagElem.textContent = tagData.name;
-            tagElem.classList.add('button','is-primary','is-outlined');
-            // signaler ceux déjà présent sur la carte
-            if(cardTags.find(cardTag => cardTag.id === tagData.id)){
-                tagElem.classList.remove('is-outlined');
-            }
-            tagElem.addEventListener('click',(event)=>{
-                event.currentTarget.classList.toggle('is-outlined');
-            });
-            tagContainer.appendChild(tagElem);
-        });
-        closeBtn.addEventListener('click', modal.onTagModalClose);
-        tagModal.classList.add('is-active');
-    },
-
-    // Close tag modal
-    
-    async onTagModalClose(event){
-        const tagModal = event.currentTarget.closest('.modal');
-        const cardId = tagModal.dataset.id;
-        const cardElem = document.querySelector(`.card[data-id="${cardId}"]`);
-        const tagButtons = [...tagModal.querySelectorAll('[slot="tags-container"] button')];
-        const tagElems = [...cardElem.querySelectorAll('.tag[data-id]')];
-        const cardTagsContainer = cardElem.querySelector('[slot="card-tags"]');
-        const tagsData = await API.getTags();
-    
-        for(const tagButton of tagButtons){
-            let tagElem = tagElems.find(tagElem => tagElem.dataset.id === tagButton.dataset.id);
-            if(tagButton.classList.contains('is-outlined')){
-                await API.dissociateCardFromTag(cardId, tagButton.dataset.id);
-                if(tagElem){
-                tagElem.remove();
-                }
-            } else {
-                await API.associateCardToTag(cardId, tagButton.dataset.id);
-                if(!tagElem){
-                tagElem = tag.createTagElem(tagsData.find(tagData => tagData.id === parseInt(tagButton.dataset.id, 10)));
-                cardTagsContainer.prepend(tagElem);
-                }
-            }
-        }
-    
-        toast('Tags modifiés','is-success');
-    },
 }
 
 export default modal;
