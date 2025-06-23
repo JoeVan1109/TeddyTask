@@ -3,10 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Custom CSS -->
+
+    <!-- Custom JS -->
+
     <title>Teddy Task</title>
+  <script type="module" crossorigin src="/assets/index-DrnHBZDR.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DWZT_VcS.css">
 </head>
 <body>
-    <h1>Teddy Task</h1>
-    <p>text</p>
+    <div class="container">
+
+        <header class="header">
+
+            <div class="logo-section">
+
+                <img src="/assets/ourson-icone-webp-DAj44NON.webp" alt="Teddy Task Logo" class="logo">
+
+                <h1 class="title">Teddy Task</h1>
+
+            </div>
+
+            <div class="search-section">
+
+                <input type="search" class="search-bar" placeholder="Rechercher une tâche">
+
+                <button class="search-button">Valider</button>
+
+            </div>
+
+            <input type="button" class="add-button" value="Créer une tâche">
+
+            <input type="button" class="add-button" id="add-list-btn" value="Créer une liste">
+
+
+        </header>
+
+        <aside class="sidebar">
+
+            <input type="button" class="filtered-statut" value="Filtrer par statut">
+
+            <input type="button" class="filtered-deadline" value="Filtrer par échéance">
+
+            <div class="progress-bar">
+
+                <label class="progress-label">Pourcentage de tâches réalisées</label>
+
+                <progress class="progress" value="50" max="100"></progress>
+
+            </div>
+
+        </aside>
+
+        <main class="main">
+
+            <!--ADD LIST MODAL-->
+
+            <div class="modal" id="add-list-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <form>
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Ajouter une liste</p>
+                            <button class="button-close" type="button" aria-label="close">X</button>
+                        </div>
+            
+                        <div class="modal-card-body">
+                            <label for="add-list-title" class="label">Titre</label>
+                            <input id="add-list-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                        </div>
+            
+                        <div class="modal-card-footer">
+                            <button class="button-modal button is-success">Ajouter</button>
+                            <button class="button-modal button close" type="button">Annuler</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+            <main id="lists-container" class="lists-container">
+
+            </main>
+
+            <!-- LIST MODAL-->
+
+            <div class="modal" id="modify-list-modal">
+
+                <div class="modal-background"></div>
+
+                <div class="modal-card">
+
+                    <form>
+
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Modifier la liste</p>
+                            <button class="button-close" type="button" aria-label="close">X</button>
+                        </div>
+
+                        <div class="modal-card-body">
+                            <label for="modify-list-title" class="label">Titre</label>
+                            <input id="modify-list-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                        </div>
+
+                        <div class="modal-card-footer">
+                            <button class="button-modal">Modifier</button>
+                            <button class="button-modal" type="button">Annuler</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!--ADD CARD MODAL-->
+
+            <div class="modal" id="add-card-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+
+                    <form>
+
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Ajouter une carte</p>
+                            <button class="button-close" type="button" aria-label="close">X</button>
+                        </div>
+                
+                        <div class="modal-card-body">
+                            <label for="add-card-title" class="label">Titre</label>
+                            <input id="add-card-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                
+                            <label for="add-card-content" class="label">Contenu</label>
+                            <textarea id="add-card-content" class="input" type="text" name="content"
+                            placeholder="Titre de la liste"></textarea>
+                
+                            <label for="add-card-color" class="label">Couleur</label>
+                            <input id="add-card-color" class="input" type="color" name="color"></input>
+                        </div>
+                
+                        <div class="modal-card-footer">
+                            <button class="button-modal">Ajouter</button>
+                            <button class="button-modal" type="button">Annuler</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <!--CARD MODAL-->
+
+            <div class="modal" id="modify-card-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+
+                    <form>
+
+                        <div class="modal-card-header">
+                            <p class="modal-card-title">Modifier la carte</p>
+                            <button class="button-close" type="button" aria-label="close">X</button>
+                        </div>
+                
+                        <div class="modal-card-body">
+                            <label for="modify-card-title" class="label">Titre</label>
+                            <input id="modify-card-title" class="input" type="text" name="title" placeholder="Titre de la liste">
+                
+                            <label for="modify-card-content" class="label">Contenu</label>
+                            <textarea id="modify-card-content" class="input" type="text" name="content"
+                            placeholder="Titre de la liste"></textarea>
+                
+                            <label for="modify-card-color" class="label">Couleur</label>
+                            <input id="modify-card-color" class="input" type="color" name="color"></input>
+                        </div>
+                
+                        <div class="modal-card-footer">
+                            <button class="button-modal">Modifier</button>
+                            <button class="button-modal" type="button">Annuler</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!--ERROR MODAL-->
+
+            <div class="modal" id="error-modal">
+
+                <div class="modal-background"></div>
+
+                <div class="modal-card">
+
+                    <div class="modal-card-header">
+                        <p class="modal-card-title" slot="error-title">Erreur</p>
+                        <button class="button-close" type="button" aria-label="close">X</button>
+                    </div>
+
+                    <div class="modal-card-body">
+                        <p id="error-message" slot="error-message">Message d'erreur</p>
+                    </div>
+
+                    <div class="modal-card-footer">
+                        <button class="button-modal" type="button">Fermer</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CONFIRM MODAL -->
+            <div class="modal" id="confirm-modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                <div class="modal-card-head">
+                    <p class="modal-card-title">Confirmation</p>
+                    <button class="delete close" type="button" aria-label="close"></button>
+                </div>
+
+                <div class="modal-card-body">
+                    <p id="error-message" slot="confirm-message">Message de confirmation</p>
+                </div>
+
+                <div class="modal-card-foot">
+                    <button class="button is-success">Confirmer</button>
+                    <button class="button close" type="button">Annuler</button>
+                </div>
+                </div>
+            </div>
+
+
+            <!--LIST TEMPLATE-->
+
+            <template id="list-template">
+
+                <section slot="list-id">
+
+                    <div class="message">
+
+                        <div class="message-header">
+
+                            <div class="header-button">
+
+                                <span class="add-card-btn" aria-role="button" aria-label="Ajouter une carte à la liste">
+                                    <img class="icons" src="data:image/webp;base64,UklGRqAFAABXRUJQVlA4TJQFAAAvY8AYEBWHgrZtpCT8Wd9/CCJiAnjry6qDJlipMW2+x3Lga6ixbTtb/tpo7M28c8gKSQsUej7u/T77z5wqyPq3aGy2v0cml/mawiWZcQw90AEVoNxGkiRFOIkLiEjcWzkRYzrcSLJdVURJCphYWHJ7EF9EDSkAAILRzABmAxsRbNt2BG9J7BWwF+BsPq0JkFvbthpJnVN7qNXv6atAUv4B1S16v1JoiyxmZvBgmCEKJpPH4nHZnzUBdARDAUwAs5ZeBMP4QhgBQdH/0biNJEmRnH7ummO+k04jkeHRwYdiW9uyCk3u2SagE7HomqV6cxiDQ4YJaHOvLCLXb/UzAXBq23oWKSTnMnZ/RU4Vv2gMwP2+730q0ICIjAoM5YwIBPzdeLjdlAgYBzl0UzHLUW3bahNmmjFKYHCQ9Q2EmVMD5LvD1m0DAEjzBS6TXgSbMxFucGeEtrO7u84uj9gHTf8nwENmnZORyUsoMo0YW8KN6Z3pe/rEmS6mIaGgeQ9DAwrJRWgRzkz/DKrsJ5yINcnD0VBaFAqmDONqNWZcGOmAJ28UbVINo0TszepI7PVBwFM3giZ/IXsEiT1ZnV8yJTPvOmElLE0gY+5g9oyYj9inVeqOyF1TqKf4QPxO0pvkH6dPHNoq3HMnFFOJMX0Qx+1TxlS3Cp2EQg1JB2k/qvyVv+VJOesnlDNvmjVSpp6Vj64oPqE1vRmpKGNGrB3wJJ5cZ5pYWSclbkJrHj/hpJQxxvi4F9lXw8whf0faF63juw/ryN5kPmwYdkLiF7TOcTPuEGSzHrwyvJv0Qut+wp2D+h+LG/6IIiVpb1Tg3egCYEzvAc8kLLvGADoZd1Xk3egUYIRpJquTEzG4mfZEhS6GIoAR84vqIzyD9c9aw873PxqNNGj8zDpgPEJXlSRGyeAHlaOvgRGygpyTjOkF7L6T9M6dAD6tyXlv8L9K0pvAiKXkEM7gicpSpwIwLmKWDd6UFjcCzHnYpBBawElQaRpKAISaFMIZdMvL3wAIeyGX+8EveUk7gPAX8PQymLxWejHthzzdLLHHMvaBnBofctcARl7GOLjqQ+EO8FUGYwOKD/iwBQgrGYw7iD/wIWkDnJHxEqQ9qWBkHFgEvTKIfQHfb2LDrcvEcf+IYz6Z//J+uGtDAG6zN/QRw7wIIbJiQ5AqA8xTDDgTIkIAqJZorSOSC7CdxoCjkLIFG1IuD4B9DOgIaY+zIR1SAFszhikJTv6zwQEfgCnEMC6hcXZtaN4NALLH1HmxBIb5TF6EjwjWeTFils4jGHoVcjEiL5cBQF8WKMa/Qn0fyatvYwA0HAyiApO6LC1liARBMKrsPx76EQrFS1qxugLMd1nYKEMTwf14SU2XlTRkgszQ4ZBZYG1Z+P9DSYPaOkMgfVxZCLYbgZmYlJRNEYLgeuE+w+M8+X+mlfYzjsumnLhquM9IqVPcCeefC/pf4EuQrGjQHKby1qNGkXkoC5XB1wqr4zaIVmX48Vp12hAF4cFxAKQsC8J2UFisL/8S/HitVJ2Igu1DDrNxmV+F1WndN+dVhiPRfTa+szJ1ic1HI6EYphZrwlDZacuCQUuJwyc/NDDx+uw+I8LQbPE6QfN4+jvql0T+JnVZ36G+TohDzzOfkZ0ZSJl3jSxU96We5ZWK0BsQO3edtwL6aUA+8gkY4SOVQS4FH1RdrfOWOTvjWG1Csnk3HfDJ+NQ9IjnefO5FJev+5YD3H9WZb8ju/OP7Zqahjzpvjdv4/JXraMfthA+JmWZiVvCmua0fTG0/yz5U/nCLd69lfE79HgK3++EceoxjHkD4wa1/YXxsVzHQPVu+LJQ78QUyQiPoZ7l+tib/M7y4Oy/+QKtv1q/cTv6vGHdtWaBvyDk6AXtw0jOf436FbcfWHB0z9G0PBwQ=" alt="Ajouter la liste">
+                                </span>
+
+                                <span class="modify-list-btn" aria-role="button" aria-label="Editer la liste">
+                                    <img class="icons" src="data:image/webp;base64,UklGRlYEAABXRUJQVlA4TEoEAAAvY8AYEJcGIZIkxVb2fWbm79/LN0AmmP9B24Bb27ZqZZ53P+4Qe9VUQhPk5KTudu1AjmTbVdPn4T1rpaBYlH8KfoUHvXfh1ratWplX8MjdK9CIIuiPNmjHIXbnDe59J4BKP8/X8b8NY5voZOzDf326u92aBms3n7NfDz2M9VXpZUSVNHQqr2Qrg2TkRPowM3FgUSJCUFmYr0LDxAA5njCGQKZEuhQkEiIEEQKjlCglDfIvHDTG7rKkLPrf5rL5nNv94rH8nv61OhzbdvJn99W5tuOtVzzvPeP79Dm8f/77++++f4fE3NS7sQ3z6PFXkwgmCCKgUERDEBJCENAUiWZrq+x+vKwEnS6V/fnW22nyafcUWFsp7tHwhXdqQCfPeMYvOgIdDQ0NjeroCHQE/sgP/tDQqEKeyYCWqMJYSbS5plUkFCQUJCqjoqKioqAikQENrVkZNZFVLOGMCvSmvFJe64lqVp4tg7rZWT3+ekyQ0okyrD+sbD6kdFm9ZCkbJ39EWd07EUNEVv8SJaW7vX8r93fvCeXn+2MgCEEETRUJTaI574VhiNi8YlgY29319VEzWueaYTaFMdE50RntE0ubGd+POibm35WlzkDWrW2H3rzz1bZta2Kntu2mbmPUVlD7qW3HtlP3HzV5552Z+3161oOI/jty28iRZAmb021mnyD+/5mvnxd/AnuZE7y5E9TDNNkb0NM02duum2myN7SDabI3tItpsjdjQ38l5hQvll2mdQNM5lfT9xKx17hGxF7jAsnbOIivxg1La4pKbJzkzagYRcXFdk70ZtN1ZVw1zivjqhGrzJmTOZiszKnj9ZugjK2Jytw4Vq9nlbE1SZlbx+lznzL3jtHlGWV8tbS2MYyjvTUS1rKiGKc2pjXztCiHOcpbF1M9Hk9z3NWR3pqY4UGrh3ltwA7z1kMxXj3AHeqtBbwjvHWgweHeGtDhEG88WuzrDUePfbzRaLKfNxicZYPV9vYBo+lq97ZYNNk+QGCBWjrQQqe/gUGav8pyXtQ5GNZpC0DzVxNJdsV1jiRmZ+MsWE4k2TEEftRIc2EWrpS/53r/TchjX7SFK0gmKh12HpJGhLZwGb5YIrR5S0jmajr8hO3VB5i5C0jmIq4Ya3VVX0DmzCeZm7DSL6mqApmzmGSiDdjfMZHKQOZYH70Gy7iizMaFjs1aRDKxsESSTZCrldbScB29o8711daNtJpJMnECtsztqhw5Z6ndpoeHzyKZVIHjlKX6Krt9JtdLEUBuSzxvqLKl9olb4pHdj5D4bV/NG0bXxQlq4hm+ZAHlsMQ7+0dfs0ockPjouCTBYycl3jotTTDhuMTTamfFCi48uEtN++Po3aIMwWa75ItvDq5Hpgs+HJF/yYsfMt9fWtqTweq//B3yb3n4/tfXhp+fHlnavVmw2rF7pGVw9/8TGGl6wO/QVh1o2OPoCDxatuXgrZ3bsPyPPAE=" alt="Modifier la liste">
+                                </span>
+
+
+                                <span class="delete-list-btn " aria-role="button" aria-label="Supprimer la liste">
+                                    <img class="icons" src="data:image/webp;base64,UklGRjQCAABXRUJQVlA4TCgCAAAvY8AYEM/iKpJsp5rLP6ZRhxEUhBdOGhtsI0lyMo9PziRHKJhYGk4Mo0iSpGQJWAPoQB3qEAWva1hFkuykX4J//ItAAArwgYCcQwDf/f4VRUGy0CiKzTTTjFTSjTKVz40iZCST+IhIJdNUoSj5J4IIupiKokRwH+lCULqoSiWZVDAVpZv/h1CJTVeEEURRlM97gpnBCJ3gUQFkmAI1oF1jIhigD/w6EerBAwWQ1/i/NeYHeZuebpv+Z5+v49q2+mCfznXJ5UgKCLZtm5H6p23btsq2bcx/Jp0XrKrX1r9JRP8duI2kSM4eM/XcG0Z+dNZuZOPpMMmys2izVE+GDYpV+OkXpYnyfW5y0lQFbpeGTVbmdW8xs5JtThphIlXr0OfRqcTDpBInWbprQicrSmQ4SRA16FYl4pxEiI6+FhHhRBLmnsvw9Bj03cncjAoNqK5OdDb+DBK4MSTB0K5yENRlHSl7/JwKYNOjw7slgDNuHBMvsOLUcEoAsBzc9u5mBYCFB+JpSQCYueV39vOyADB5qd7/tACw+MjxjtwbAsDYWeh8XABYd/H8Xfp3hNqaULMk29/+yaigKYec58v1FDFxEeLsfo6wLc6upgQ0B3wdKwLAPLlAMuXfFWr78lCobfv4MPWztHV+mGyYGi+6A4YLM2PSYFAyYTDuV50hbU5JBz6PPeNly3DhYnK24fJrvABzE7ixjZN4Hf/rfurpDqhPv6H0wfXNHwA=" alt="Supprimer la liste">
+                                </span>
+
+                            </div>
+
+                            <div class="list-name" slot="list-title"></div>
+
+                        </div>
+
+                        <div class="message-body">
+                            <!--Card here-->
+                        </div>
+                        
+                    </div>
+
+                </section>
+
+            </template>
+            
+
+
+            <!--CARD TEMPLATE-->
+
+            <template id="card-template">
+
+                <article class="card">
+
+                    <div class="color-card"></div>
+
+                    <div class="card-header">
+
+                        <div class="card-header-title">
+                            <p slot="card-title"></p>
+                        </div>
+
+                        <div class="card-header-icons">
+
+                            <span class="btn-modal-list" aria-role="button" aria-label="Editer la liste">
+                                <img class="icons" src="./assets/img/icon-modal.webp" alt="Modifier la liste">
+                            </span>
+
+                            <span class="btn-delete-list" aria-role="button" aria-label="Supprimer la liste">
+                                <img class="icons" src="data:image/webp;base64,UklGRjQCAABXRUJQVlA4TCgCAAAvY8AYEM/iKpJsp5rLP6ZRhxEUhBdOGhtsI0lyMo9PziRHKJhYGk4Mo0iSpGQJWAPoQB3qEAWva1hFkuykX4J//ItAAArwgYCcQwDf/f4VRUGy0CiKzTTTjFTSjTKVz40iZCST+IhIJdNUoSj5J4IIupiKokRwH+lCULqoSiWZVDAVpZv/h1CJTVeEEURRlM97gpnBCJ3gUQFkmAI1oF1jIhigD/w6EerBAwWQ1/i/NeYHeZuebpv+Z5+v49q2+mCfznXJ5UgKCLZtm5H6p23btsq2bcx/Jp0XrKrX1r9JRP8duI2kSM4eM/XcG0Z+dNZuZOPpMMmys2izVE+GDYpV+OkXpYnyfW5y0lQFbpeGTVbmdW8xs5JtThphIlXr0OfRqcTDpBInWbprQicrSmQ4SRA16FYl4pxEiI6+FhHhRBLmnsvw9Bj03cncjAoNqK5OdDb+DBK4MSTB0K5yENRlHSl7/JwKYNOjw7slgDNuHBMvsOLUcEoAsBzc9u5mBYCFB+JpSQCYueV39vOyADB5qd7/tACw+MjxjtwbAsDYWeh8XABYd/H8Xfp3hNqaULMk29/+yaigKYec58v1FDFxEeLsfo6wLc6upgQ0B3wdKwLAPLlAMuXfFWr78lCobfv4MPWztHV+mGyYGi+6A4YLM2PSYFAyYTDuV50hbU5JBz6PPeNly3DhYnK24fJrvABzE7ixjZN4Hf/rfurpDqhPv6H0wfXNHwA=" alt="Supprimer la liste">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-content" slot="card-content"></div>
+
+                    <div class="card-footer">
+
+                        <div class="card-footer-btn">
+
+                            <span class="btn-modifier-list" aria-role="button" aria-label="Modifier le tag">
+                                <img class="icons" src="data:image/webp;base64,UklGRjQCAABXRUJQVlA4TCgCAAAvY8AYEM/iKpJsp5rLP6ZRhxEUhBdOGhtsI0lyMo9PziRHKJhYGk4Mo0iSpGQJWAPoQB3qEAWva1hFkuykX4J//ItAAArwgYCcQwDf/f4VRUGy0CiKzTTTjFTSjTKVz40iZCST+IhIJdNUoSj5J4IIupiKokRwH+lCULqoSiWZVDAVpZv/h1CJTVeEEURRlM97gpnBCJ3gUQFkmAI1oF1jIhigD/w6EerBAwWQ1/i/NeYHeZuebpv+Z5+v49q2+mCfznXJ5UgKCLZtm5H6p23btsq2bcx/Jp0XrKrX1r9JRP8duI2kSM4eM/XcG0Z+dNZuZOPpMMmys2izVE+GDYpV+OkXpYnyfW5y0lQFbpeGTVbmdW8xs5JtThphIlXr0OfRqcTDpBInWbprQicrSmQ4SRA16FYl4pxEiI6+FhHhRBLmnsvw9Bj03cncjAoNqK5OdDb+DBK4MSTB0K5yENRlHSl7/JwKYNOjw7slgDNuHBMvsOLUcEoAsBzc9u5mBYCFB+JpSQCYueV39vOyADB5qd7/tACw+MjxjtwbAsDYWeh8XABYd/H8Xfp3hNqaULMk29/+yaigKYec58v1FDFxEeLsfo6wLc6upgQ0B3wdKwLAPLlAMuXfFWr78lCobfv4MPWztHV+mGyYGi+6A4YLM2PSYFAyYTDuV50hbU5JBz6PPeNly3DhYnK24fJrvABzE7ixjZN4Hf/rfurpDqhPv6H0wfXNHwA=" alt="Modifier la liste">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </template>
+
+            <template id="tag-template">
+
+                <span class="tag">
+                    <span slot="tag-name">Nom du tag</span>
+                </span>
+
+            </template>
+
+
+        </main>
+
+    </div>
 </body>
 </html>
