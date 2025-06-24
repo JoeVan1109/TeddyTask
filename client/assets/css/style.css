@@ -216,6 +216,16 @@
     margin-bottom: 1rem;
 }
 
+.card {
+    background-color: #C4D7FF ;
+
+    margin: 1rem;
+    padding: 1rem;
+
+
+    border-radius: 11px;
+}
+
 .modal-card-header {
     display: flex;
     justify-content: space-around;
@@ -257,6 +267,15 @@
 }
 
 .card-item {
+
+    width: auto;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.5rem;
 
     border-radius: 11px;
     border: none;

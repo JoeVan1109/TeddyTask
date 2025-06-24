@@ -64,28 +64,37 @@ const modal = {
         }
     },
 
-    // Initialize modify list modal form
+    
     
     // Initialize modify list modal form
     initModifyListModalForm(){
-        const modifyModal = document.querySelector('#modify-list-modal');
-        const formElem =  modifyModal.querySelector('form');
-        formElem.addEventListener('submit', onModifyListFormSubmit);
-        async function onModifyListFormSubmit(event){
-            event.preventDefault();
-            const id = modifyModal.dataset.id;
-            const formData = new FormData(formElem);
-            const data = Object.fromEntries(formData);
-            // Pas besoin de supprimer date ici car problème seulement sur cards
-            const newListData = await API.modifyList(id, data);
-            if(newListData){
-                document.querySelector(`section[data-id="${id}"] [slot="list-title"]`).textContent = newListData.title;
-                formElem.reset();
-                modal.closeActiveModal();
-                toast('Liste Modifiée','is-success');
-            }
+    const modifyModal = document.querySelector('#modify-list-modal');
+    const formElem =  modifyModal.querySelector('form');
+    formElem.addEventListener('submit', onModifyListFormSubmit);
+    async function onModifyListFormSubmit(event){
+        event.preventDefault();
+        const id = modifyModal.dataset.id;
+        const formData = new FormData(formElem);
+        const data = Object.fromEntries(formData);
+
+        // Vérification et nettoyage de la date
+        const dateValue = data.date?.trim();
+        if (dateValue) {
+            data.date = dateValue;
+        } else {
+            toast('La date est obligatoire', 'is-danger');
+            return;
         }
-    },
+
+        const newListData = await API.modifyList(id, data);
+        if(newListData){
+            document.querySelector(`section[data-id="${id}"] [slot="list-title"]`).textContent = newListData.title;
+            formElem.reset();
+            modal.closeActiveModal();
+            toast('Liste Modifiée','is-success');
+        }
+    }
+},
 
     // Initialize add card modal form
     initAddCardModalForm(){
@@ -100,13 +109,7 @@ const modal = {
 
         data.list_id = Number(id);
 
-        // Récupérer et valider la date
-        const dateValue = data.date?.trim();  // récupérer date et enlever espaces
-        if (dateValue) {
-            data.date = dateValue;  // on garde la date si non vide
-        } else {
-            delete data.date;  // sinon on supprime la clé pour ne pas envoyer de null
-        }
+        
 
         const newCardData = await API.createCard(data);
         if (newCardData) {

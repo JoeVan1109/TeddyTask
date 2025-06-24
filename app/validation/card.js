@@ -6,7 +6,6 @@ import Joi from 'joi';
 export const createSchema = Joi.object({
     title: Joi.string().min(3).required(),
     content: Joi.string().required(),
-    date: Joi.string().isoDate(),
     color: Joi.string().max(7),
     position: Joi.number().integer(),
     list_id: Joi.number().integer().required(),
@@ -15,7 +14,6 @@ export const createSchema = Joi.object({
 export const patchSchema = Joi.object({
     title: Joi.string().min(3),
     content: Joi.string(),
-    date: Joi.string().isoDate(),
     color: Joi.string().max(7),
     position: Joi.number().integer(),
     list_id: Joi.number().integer(),

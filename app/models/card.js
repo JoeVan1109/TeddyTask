@@ -12,10 +12,6 @@ Card.init({
         type: DataTypes.TEXT,
         allowNull: false,
     },
-    date:{
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
     color: {
         type: DataTypes.STRING,
         allowNull: true,

@@ -13,6 +13,10 @@ List.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1,
+    },
+    date:{
+        type: DataTypes.DATE,
+        allowNull: false,
     }
 }, {
     sequelize: client,

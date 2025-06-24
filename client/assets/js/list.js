@@ -49,17 +49,18 @@ const list = {
 
     createListElem(data){
         const listTemplate = document.querySelector('#list-template');
-        // le clone d'un template n'est pas un element html mais un fragment de document
-        // (une sorte de mono dom, qui n'est pas dans le dom)
-        // pour accéder directement à l'élement html, il faut le selectionner.
         const listClone = listTemplate.content.cloneNode(true).querySelector('section');
         listClone.querySelector('[slot="list-title"]').textContent = data.title;
+        const dateElem = listClone.querySelector('[slot="list-date"]');
+        dateElem.textContent = data.date ? new Date(data.date).toLocaleDateString() : '';
+        dateElem.dataset.rawDate = data.date || '';
+        // ...le reste du code...
         listClone.querySelector('.delete-list-btn').addEventListener('click', list.onDeleteListClick);
         listClone.querySelector('.modify-list-btn').addEventListener('click', list.onModifyListClick);
         listClone.querySelector('.add-card-btn').addEventListener('click', list.onAddCardClick);
         listClone.dataset.id = data.id;
         if(data.cards?.length){
-        card.initCards(listClone, data.cards);
+            card.initCards(listClone, data.cards);
         }
         card.initSortableCards(listClone);
         return listClone;
@@ -81,11 +82,14 @@ const list = {
     },
 
     onModifyListClick(event){
-        const modal = document.querySelector('#modify-list-modal');
-        modal.dataset.id = event.currentTarget.closest('section').dataset.id;
-        modal.querySelector('input[name="title"]').value = 
-        event.currentTarget.closest('section').querySelector('[slot="list-title"]').textContent;
-        modal.classList.add('is-active');
+        const modalElem = document.querySelector('#modify-list-modal');
+        const section = event.currentTarget.closest('section');
+        modalElem.dataset.id = section.dataset.id;
+        modalElem.querySelector('input[name="title"]').value = section.querySelector('[slot="list-title"]').textContent;
+        // Utilise la vraie date stockée dans data-raw-date
+        const rawDate = section.querySelector('[slot="list-date"]').dataset.rawDate;
+        modalElem.querySelector('input[name="date"]').value = rawDate ? rawDate.substring(0,10) : '';
+        modalElem.classList.add('is-active');
     },
 
     onAddCardClick(event){
