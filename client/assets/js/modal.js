@@ -97,22 +97,18 @@ const modal = {
 },
 
     // Initialize add card modal form
-    initAddCardModalForm(){
+        initAddCardModalForm(){
         const addCardModal = document.querySelector('#add-card-modal');
         const formElem =  addCardModal.querySelector('form');
         formElem.addEventListener('submit', onAddCardFormSubmit);
-        async function onAddCardFormSubmit(event) {
+        async function onAddCardFormSubmit(event){
         event.preventDefault();
         const id = addCardModal.dataset.id;
         const formData = new FormData(formElem);
         const data = Object.fromEntries(formData);
-
-        data.list_id = Number(id);
-
-        
-
+        data.list_id = id;
         const newCardData = await API.createCard(data);
-        if (newCardData) {
+        if(newCardData){
             const cardContainer = document.querySelector(`section[data-id="${id}"] .message-body`);
             const newCardElem = card.createCardElem(newCardData);
             cardContainer.appendChild(newCardElem);
@@ -120,8 +116,7 @@ const modal = {
             modal.closeActiveModal();
             toast('Carte Créée','is-success');
         }
-    }
-
+        }
     },
 
 
@@ -130,26 +125,25 @@ const modal = {
     // Initialize modify card modal form
 
     initModifyCardModalForm(){
-        const modifyCardModal = document.querySelector('#modify-card-modal');
-        const formElem =  modifyCardModal.querySelector('form');
-        formElem.addEventListener('submit', onModifyCardFormSubmit);
-        async function onModifyCardFormSubmit(event){
-            event.preventDefault();
-            const id = modifyCardModal.dataset.id;
-            const formData = new FormData(formElem);
-            const data = Object.fromEntries(formData);
-            const modifiedCardData = await API.modifyCard(id,data);
-            if(modifiedCardData){
-                const card = document.querySelector(`.card[data-id="${id}"]`);
-                card.querySelector('[slot="card-title"]').textContent = modifiedCardData.title;
-                card.querySelector('[slot="card-content"]').textContent = modifiedCardData.description;
-                card.querySelector('[slot="card-date"]').textContent = modifiedCardData.date ? new Date(modifiedCardData.date).toLocaleDateString() : '';
-                card.querySelector('[slot="card-color"]').textContent = modifiedCardData.color;
-                card.querySelector('.card-color').style.backgroundColor = data.color;
-                formElem.reset();
-                modal.closeActiveModal();
-                toast('Carte Modifiée','is-success');
-            }
+    const modifyCardModal = document.querySelector('#modify-card-modal');
+    const formElem =  modifyCardModal.querySelector('form');
+    formElem.addEventListener('submit', onModifyCardFormSubmit);
+    async function onModifyCardFormSubmit(event){
+        event.preventDefault();
+        const id = modifyCardModal.dataset.id;
+        const formData = new FormData(formElem);
+        const data = Object.fromEntries(formData);
+        const modifiedCardData = await API.modifyCard(id,data);
+        
+        if(modifiedCardData){
+            const card = document.querySelector(`.card[data-id="${id}"]`);
+            card.querySelector('[slot="card-title"]').textContent = modifiedCardData.title;
+            card.querySelector('[slot="card-content"]').textContent = modifiedCardData.content;
+            card.querySelector('.card-color').style.backgroundColor = data.color;
+            formElem.reset();
+            modal.closeActiveModal();
+            toast('Carte Modifiée','is-success');
+        }
         }
     },
 

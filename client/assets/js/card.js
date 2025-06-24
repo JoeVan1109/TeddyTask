@@ -16,7 +16,7 @@ const card = {
         });
     },
     
-    // ...existing code...
+
     createCardElem(data){
         const cardTemplate = document.querySelector('#card-template');
         const cardClone = cardTemplate.content.cloneNode(true).querySelector('article');
@@ -30,10 +30,9 @@ const card = {
         // if(data.tags?.length){
         //     tag.initTags(cardClone, data.tags);
         // }
-        // return cardClone;
+        return cardClone;
     },
-// ...existing code...
-    
+
     // Initialize sortable cards
     // This function is called when the list is created
     initSortableCards(listElem){
