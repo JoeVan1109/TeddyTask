@@ -140,6 +140,7 @@ const modal = {
                 const card = document.querySelector(`.card[data-id="${id}"]`);
                 card.querySelector('[slot="card-title"]').textContent = modifiedCardData.title;
                 card.querySelector('[slot="card-content"]').textContent = modifiedCardData.description;
+                card.querySelector('[slot="card-date"]').textContent = modifiedCardData.date ? new Date(modifiedCardData.date).toLocaleDateString() : '';
                 card.querySelector('[slot="card-color"]').textContent = modifiedCardData.color;
                 card.querySelector('.card-color').style.backgroundColor = data.color;
                 formElem.reset();

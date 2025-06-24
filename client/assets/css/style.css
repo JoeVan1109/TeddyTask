@@ -5,7 +5,6 @@
 .container {
     height: 100vh;
 
-
     background-image: url(../img/background.jpg);
     background-size: cover;
     background-position: center;
@@ -239,6 +238,14 @@
     margin-bottom: 2.5rem;
 }
 
+.card-header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    flex-direction: column;
+}
+
 .button-close {
     margin-bottom: 2.45rem;
     border: none;
@@ -275,6 +282,19 @@
     text-align: center;
 }
 
+.card-date {
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+
+    border: none;
+    border-radius: 6px;
+
+    text-align: center;
+
+    margin: 1rem;
+}
 
 
 .input {

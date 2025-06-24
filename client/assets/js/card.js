@@ -16,13 +16,15 @@ const card = {
         });
     },
     
-    // Create a card
+    // ...existing code...
     createCardElem(data){
         const cardTemplate = document.querySelector('#card-template');
         const cardClone = cardTemplate.content.cloneNode(true).querySelector('article');
         cardClone.querySelector('[slot="card-title"]').textContent = data.title;
         cardClone.querySelector('[slot="card-content"]').textContent = data.content;
         cardClone.querySelector('.card-color').style.backgroundColor = data.color;
+        const dateElem = cardClone.querySelector('[slot="card-date"]');
+        dateElem.textContent = data.date ? new Date(data.date).toLocaleDateString() : '';
         cardClone.querySelector('.modify-card-btn').addEventListener('click', card.onModifyCardClick);
         cardClone.querySelector('.delete-card-btn').addEventListener('click', card.onDeleteCardClick);
         cardClone.querySelector('.add-tag-btn').addEventListener('click', card.onAddTagClick);
@@ -32,6 +34,7 @@ const card = {
         }
         return cardClone;
     },
+// ...existing code...
     
     // Initialize sortable cards
     // This function is called when the list is created
