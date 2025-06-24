@@ -411,4 +411,10 @@
 
 .icons {
     width: 2rem;
+    transition: width 0.2s;
+}
+
+.icons:hover {
+    cursor: pointer;
+    width: 2.5rem;
 }
