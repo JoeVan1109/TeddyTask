@@ -211,11 +211,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    ;
 }
 
 .card-item {
-    width: 9rem;
-    height: 2rem;
 
     border-radius: 11px;
     border: none;
@@ -223,10 +222,22 @@
     background-color: #FFFBF9;
     color: #404040;
 
+    font-size: 1.5rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+
+    margin: 2rem 0 2rem 1.5rem;
+}
+
+.card-content {
+    color: #404040;
+
     font-size: 1rem;
     font-family: "Fuzzy Bubbles", sans-serif;
 
-    margin: 1rem;
+    border: none;
+    border-radius: 6px;
+
+    text-align: center;
 }
 
 .modal-card-title {
@@ -296,6 +307,8 @@
     font-family: "Fuzzy Bubbles", sans-serif;
 }
 
+
+
 .modal-card-footer {
     display: flex;
     align-items: center;
@@ -313,7 +326,7 @@
 }
 
 .message {
-    width: 25rem;
+    width: 35rem;
     height: auto;
 
     display: flex;
