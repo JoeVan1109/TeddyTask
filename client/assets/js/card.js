@@ -1,7 +1,7 @@
 import Sortable from 'sortablejs';
 import API from './api.js';
 import modal from './modal.js';
-import tag from './tag.js';
+//import tag from './tag.js';
 import utils from './utils.js';
 
 const card = {
@@ -12,7 +12,7 @@ const card = {
         const cardContainer = listElem.querySelector('.message-body');
         sortedCards.forEach(cardData => {
             const cardElem = card.createCardElem(cardData);
-            cardContainer.appendChild(cardElem);
+            //cardContainer.appendChild(cardElem);
         });
     },
     
@@ -25,12 +25,12 @@ const card = {
         cardClone.querySelector('.card-color').style.backgroundColor = data.color;
         cardClone.querySelector('.modify-card-btn').addEventListener('click', card.onModifyCardClick);
         cardClone.querySelector('.delete-card-btn').addEventListener('click', card.onDeleteCardClick);
-        cardClone.querySelector('.add-tag-btn').addEventListener('click', card.onAddTagClick);
-        cardClone.dataset.id = data.id;
-        if(data.tags?.length){
-            tag.initTags(cardClone, data.tags);
-        }
-        return cardClone;
+        // cardClone.querySelector('.add-tag-btn').addEventListener('click', card.onAddTagClick);
+        // cardClone.dataset.id = data.id;
+        // if(data.tags?.length){
+        //     tag.initTags(cardClone, data.tags);
+        // }
+        // return cardClone;
     },
 // ...existing code...
     
