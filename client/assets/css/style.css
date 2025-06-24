@@ -142,6 +142,23 @@
     font-family: "Fuzzy Bubbles", sans-serif;
 }
 
+.label {
+    width: 11rem;
+    height: 3rem;
+
+    border-radius: 11px;
+    border: none;
+
+    margin: 4rem 0 0 2.5rem;
+    padding: 0.5rem;
+
+    background-color: #FFD7C4;
+    color: #404040;
+
+    font-size: 1rem;
+    font-family: "Fuzzy Bubbles", sans-serif;
+}
+
 .progress {
     height: 2rem;
 }
@@ -214,6 +231,24 @@
     ;
 }
 
+.modal-card-title {
+
+    font-size: 1.5rem;
+    font-family: "Chewy", system-ui;
+
+    margin-bottom: 2.5rem;
+}
+
+.button-close {
+    margin-bottom: 2.45rem;
+    border: none;
+    border-radius: 7px;
+    background-color: #FFFBF9;
+    color: #404040;
+
+    padding: 0.5rem;
+}
+
 .card-item {
 
     border-radius: 11px;
@@ -240,21 +275,7 @@
     text-align: center;
 }
 
-.modal-card-title {
-    width: 100%;
-    height: 5rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #FFD7C4;
-
-    border-radius: 11px;
-
-    font-family: "Chewy", system-ui;
-    font-size: 1.5rem;
-}
 
 .input {
     background-color: #FFFBF9;
@@ -373,7 +394,20 @@
     font-size: 1.5rem;
 }
 
+.modify-card-title {
+    width: 100%;
+    height: 5rem;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    border-radius: 11px;
+
+    font-family: "Chewy", system-ui;
+    font-size: 1.5rem;
+}
 
 .icons {
     width: 2rem;
