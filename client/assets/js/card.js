@@ -11,8 +11,9 @@ const card = {
         const sortedCards = [...cards].sort((a, b) => a.position - b.position);
         const cardContainer = listElem.querySelector('.message-body');
         sortedCards.forEach(cardData => {
+            console.log('Card data to send:', cardData);
             const cardElem = card.createCardElem(cardData);
-            //cardContainer.appendChild(cardElem);
+            cardContainer.appendChild(cardElem);
         });
     },
     
@@ -25,11 +26,11 @@ const card = {
         cardClone.querySelector('.card-color').style.backgroundColor = data.color;
         cardClone.querySelector('.modify-card-btn').addEventListener('click', card.onModifyCardClick);
         cardClone.querySelector('.delete-card-btn').addEventListener('click', card.onDeleteCardClick);
-        // cardClone.querySelector('.add-tag-btn').addEventListener('click', card.onAddTagClick);
-        // cardClone.dataset.id = data.id;
-        // if(data.tags?.length){
-        //     tag.initTags(cardClone, data.tags);
-        // }
+            cardClone.querySelector('.add-tag-btn').addEventListener('click', card.onAddTagClick);
+        cardClone.dataset.id = data.id;
+            if(data.tags?.length){
+            tag.initTags(cardClone, data.tags);
+        }
         return cardClone;
     },
 

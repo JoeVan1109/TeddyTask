@@ -1,4 +1,3 @@
-
 import { APIBaseURL } from './config.js';
 import modal from './modal.js';
 
@@ -38,7 +37,7 @@ const API = {
             body: JSON.stringify(data),
         });
     },
-    
+
     async modifyList(id, data){
         return await API.fetchAPI(`/lists/${id}`,{
             method: 'PATCH',
@@ -46,13 +45,13 @@ const API = {
             body: JSON.stringify(data),
         });
     },
-    
+
     async deleteList(id){
         return await API.fetchAPI(`/lists/${id}`,{
             method: 'DELETE',
         });
     },
-    
+
     async createCard(data){
         console.log('Data envoyée à l’API /cards :', data);
         return await API.fetchAPI('/cards',{
@@ -61,11 +60,11 @@ const API = {
             body: JSON.stringify(data),
         });
     },
-    
+
     async getCard(id){
         return await API.fetchAPI(`/cards/${id}`);
     },
-    
+
     async modifyCard(id, data){
         return await API.fetchAPI(`/cards/${id}`,{
             method: 'PATCH',
@@ -73,29 +72,29 @@ const API = {
             body: JSON.stringify(data),
         });
     },
-    
+
     async deleteCard(id){
         return await API.fetchAPI(`/cards/${id}`,{
             method: 'DELETE',
         });
     },
-    
+
     async associateCardToTag(cardId, tagId){
         return await API.fetchAPI(`/cards/${cardId}/tags/${tagId}`, {
             method: 'PUT',
         });
     },
-    
+
     async dissociateCardFromTag(cardId, tagId){
         return await API.fetchAPI(`/cards/${cardId}/tags/${tagId}`, {
             method: 'DELETE',
         });
     },
-    
+
     async getTags(){
         return await API.fetchAPI('/tags');
     },
-    
+
     async getTag(id){
         return await API.fetchAPI(`/tags/${id}`);
     },

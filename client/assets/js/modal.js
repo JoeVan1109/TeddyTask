@@ -1,6 +1,7 @@
 import API from './api.js';
 import list from './list.js';
 import card from './card.js';
+import tag from './tag.js';
 
 import { toast } from './toast.js';
 
@@ -32,7 +33,7 @@ const modal = {
             activeModal.classList.remove('is-active');
         }
     },
-    
+
     // Initialize error modal
 
     initErrorModal(error){
@@ -46,7 +47,7 @@ const modal = {
     },
 
     // Initialize add list modal form
-    
+
     initAddListModalForm(){
         const formElem = document.querySelector('#add-list-modal form');
         formElem.addEventListener('submit', onAddListFormSubmit);
@@ -64,51 +65,52 @@ const modal = {
         }
     },
 
-    
-    
+    // Initialize modify list modal form
+
     // Initialize modify list modal form
     initModifyListModalForm(){
-    const modifyModal = document.querySelector('#modify-list-modal');
-    const formElem =  modifyModal.querySelector('form');
-    formElem.addEventListener('submit', onModifyListFormSubmit);
-    async function onModifyListFormSubmit(event){
-        event.preventDefault();
-        const id = modifyModal.dataset.id;
-        const formData = new FormData(formElem);
-        const data = Object.fromEntries(formData);
-
-        // Vérification et nettoyage de la date
-        const dateValue = data.date?.trim();
-        if (dateValue) {
-            data.date = dateValue;
-        } else {
-            toast('La date est obligatoire', 'is-danger');
-            return;
+        const modifyModal = document.querySelector('#modify-list-modal');
+        const formElem =  modifyModal.querySelector('form');
+        formElem.addEventListener('submit', onModifyListFormSubmit);
+        async function onModifyListFormSubmit(event){
+            event.preventDefault();
+            const id = modifyModal.dataset.id;
+            const formData = new FormData(formElem);
+            const data = Object.fromEntries(formData);
+            // Pas besoin de supprimer date ici car problème seulement sur cards
+            const newListData = await API.modifyList(id, data);
+            if(newListData){
+                document.querySelector(`section[data-id="${id}"] [slot="list-title"]`).textContent = newListData.title;
+                formElem.reset();
+                modal.closeActiveModal();
+                toast('Liste Modifiée','is-success');
+            }
         }
-
-        const newListData = await API.modifyList(id, data);
-        if(newListData){
-            document.querySelector(`section[data-id="${id}"] [slot="list-title"]`).textContent = newListData.title;
-            formElem.reset();
-            modal.closeActiveModal();
-            toast('Liste Modifiée','is-success');
-        }
-    }
-},
+    },
 
     // Initialize add card modal form
-        initAddCardModalForm(){
+    initAddCardModalForm(){
         const addCardModal = document.querySelector('#add-card-modal');
         const formElem =  addCardModal.querySelector('form');
         formElem.addEventListener('submit', onAddCardFormSubmit);
-        async function onAddCardFormSubmit(event){
+        async function onAddCardFormSubmit(event) {
         event.preventDefault();
         const id = addCardModal.dataset.id;
         const formData = new FormData(formElem);
         const data = Object.fromEntries(formData);
-        data.list_id = id;
+
+        data.list_id = Number(id);
+
+        // Récupérer et valider la date
+        const dateValue = data.date?.trim();  // récupérer date et enlever espaces
+        if (dateValue) {
+            data.date = dateValue;  // on garde la date si non vide
+        } else {
+            delete data.date;  // sinon on supprime la clé pour ne pas envoyer de null
+        }
+
         const newCardData = await API.createCard(data);
-        if(newCardData){
+        if (newCardData) {
             const cardContainer = document.querySelector(`section[data-id="${id}"] .message-body`);
             const newCardElem = card.createCardElem(newCardData);
             cardContainer.appendChild(newCardElem);
@@ -116,39 +118,41 @@ const modal = {
             modal.closeActiveModal();
             toast('Carte Créée','is-success');
         }
-        }
+    }
+
     },
 
 
-    
+
 
     // Initialize modify card modal form
 
     initModifyCardModalForm(){
-    const modifyCardModal = document.querySelector('#modify-card-modal');
-    const formElem =  modifyCardModal.querySelector('form');
-    formElem.addEventListener('submit', onModifyCardFormSubmit);
-    async function onModifyCardFormSubmit(event){
-        event.preventDefault();
-        const id = modifyCardModal.dataset.id;
-        const formData = new FormData(formElem);
-        const data = Object.fromEntries(formData);
-        const modifiedCardData = await API.modifyCard(id,data);
-        
-        if(modifiedCardData){
-            const card = document.querySelector(`.card[data-id="${id}"]`);
-            card.querySelector('[slot="card-title"]').textContent = modifiedCardData.title;
-            card.querySelector('[slot="card-content"]').textContent = modifiedCardData.content;
-            card.querySelector('.card-color').style.backgroundColor = data.color;
-            formElem.reset();
-            modal.closeActiveModal();
-            toast('Carte Modifiée','is-success');
-        }
+        const modifyCardModal = document.querySelector('#modify-card-modal');
+        const formElem =  modifyCardModal.querySelector('form');
+        formElem.addEventListener('submit', onModifyCardFormSubmit);
+        async function onModifyCardFormSubmit(event){
+            event.preventDefault();
+            const id = modifyCardModal.dataset.id;
+            const formData = new FormData(formElem);
+            const data = Object.fromEntries(formData);
+            const modifiedCardData = await API.modifyCard(id,data);
+            if(modifiedCardData){
+                const card = document.querySelector(`.card[data-id="${id}"]`);
+                card.querySelector('[slot="card-title"]').textContent = modifiedCardData.title;
+                card.querySelector('[slot="card-content"]').textContent = modifiedCardData.description;
+                card.querySelector('[slot="card-date"]').textContent = modifiedCardData.date ? new Date(modifiedCardData.date).toLocaleDateString() : '';
+                card.querySelector('[slot="card-color"]').textContent = modifiedCardData.color;
+                card.querySelector('.card-color').style.backgroundColor = data.color;
+                formElem.reset();
+                modal.closeActiveModal();
+                toast('Carte Modifiée','is-success');
+            }
         }
     },
 
     // Initialize confirm modal
-    
+
     initConfirmModal(message, callback){
         const confirmModal = document.querySelector('#confirm-modal');
         const confirmBtn = confirmModal.querySelector('button.is-success');
@@ -165,13 +169,76 @@ const modal = {
     },
 
         // Close confirm modal
-    
+
     onConfirmModalClose(){
         const confirmBtn = document.querySelector('#confirm-modal button.is-success');
         confirmBtn.replaceWith(confirmBtn.cloneNode(true));
     },
-    
 
+
+    // Initialize tag modal
+
+    async initTagModal(cardId){
+        const tagModal = document.querySelector('#tag-modal');
+        const tagContainer = tagModal.querySelector('[slot="tags-container"]');
+        const closeBtn = tagModal.querySelector('.button-close');
+        closeBtn.removeEventListener('click', modal.onTagModalClose);
+        tagContainer.innerHTML = '';
+        tagModal.dataset.id = cardId;
+        // récupérer tous les tags
+        const tags = await API.getTags();
+        // récupérer la carte
+        const cardData = await API.getCard(cardId);
+        // récupérer les tags de la carte
+        const cardTags = cardData.tags ? cardData.tags : [];
+        // les afficher
+        tags.forEach(tagData => {
+            const tagElem = document.createElement('button');
+            tagElem.dataset.id = tagData.id;
+            tagElem.textContent = tagData.name;
+            tagElem.classList.add('button','is-primary','is-outlined');
+            // signaler ceux déjà présent sur la carte
+            if(cardTags.find(cardTag => cardTag.id === tagData.id)){
+                tagElem.classList.remove('is-outlined');
+            }
+            tagElem.addEventListener('click',(event)=>{
+                event.currentTarget.classList.toggle('is-outlined');
+            });
+            tagContainer.appendChild(tagElem);
+        });
+        closeBtn.addEventListener('click', modal.onTagModalClose);
+        tagModal.classList.add('is-active');
+    },
+
+    // Close tag modal
+    
+    async onTagModalClose(event){
+        const tagModal = event.currentTarget.closest('.modal');
+        const cardId = tagModal.dataset.id;
+        const cardElem = document.querySelector(`.card[data-id="${cardId}"]`);
+        const tagButtons = [...tagModal.querySelectorAll('[slot="tags-container"] button')];
+        const tagElems = [...cardElem.querySelectorAll('.tag[data-id]')];
+        const cardTagsContainer = cardElem.querySelector('[slot="card-tags"]');
+        const tagsData = await API.getTags();
+    
+        for(const tagButton of tagButtons){
+            let tagElem = tagElems.find(tagElem => tagElem.dataset.id === tagButton.dataset.id);
+            if(tagButton.classList.contains('is-outlined')){
+                await API.dissociateCardFromTag(cardId, tagButton.dataset.id);
+                if(tagElem){
+                tagElem.remove();
+                }
+            } else {
+                await API.associateCardToTag(cardId, tagButton.dataset.id);
+                if(!tagElem){
+                tagElem = tag.createTagElem(tagsData.find(tagData => tagData.id === parseInt(tagButton.dataset.id, 10)));
+                cardTagsContainer.prepend(tagElem);
+                }
+            }
+        }
+    
+        toast('Tags modifiés','is-success');
+    },
 }
 
 export default modal;
